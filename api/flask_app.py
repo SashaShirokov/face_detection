@@ -1,11 +1,11 @@
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, url_for
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
 api = Api(app)
 
 
-''' For now we are using fake data but then we will get it from the video-chat or database. '''
+''' For now we are using dummy data but then we will get it from the video-chat or database. '''
 interview_data = [
     {
         'interviewer': 'Epam Mahager',

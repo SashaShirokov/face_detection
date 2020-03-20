@@ -1,12 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h1>Home Page of our application!</h1>
-    <h3>Face detection during a video-chat / interview.</h3>
-    <p>------------------------------------------------------------------------------</p>
     {% for data in interview_data %}
-        <h4>Interview is conducted by {{ data.interviewer }} with {{ data.interviewee }}</h4>
-        <p>The purpose of the meeting is {{ data.agenda }}</p>
-        <p>General information of {{ data.interviewee}}</p>
-        <img src="{{ data.image_source }}" alt="User Image">
+        <div class="content-section mt-4">
+            <h4>Interview is conducted by {{ data.interviewer }} with {{ data.interviewee }}</h4>
+            <p>The purpose of the meeting is {{ data.agenda }}</p>
+            <p>General information of {{ data.interviewee}}</p>
+            <img src="{{ data.image_source }}" alt="User Image">
+        </div>
     {% endfor %}
 {% endblock content%}
