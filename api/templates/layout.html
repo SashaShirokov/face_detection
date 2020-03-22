@@ -20,7 +20,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                   <div class="navbar-nav mr-auto">
-                    <!-- <a class="nav-item nav-link" href="/">Home</a> -->
+                    <!-- <a class="nav-item nav-link" href="/">Feedabcks</a> -->
                     <a class="nav-item nav-link" href="/about">About</a>
                   </div>
                   <!-- Navbar Right Side -->
@@ -40,14 +40,9 @@
             </div>
             <div class="col-md-4">
               <div class="content-section mt-4">
-                <h3>Our Sidebar</h3>
-                <p class='text-muted'>We can put any information here we'd like.
-                  <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Latest Interviews</li>
-                    <li class="list-group-item list-group-item-light">Database</li>
-                    <li class="list-group-item list-group-item-light">Calendars</li>
-                    <li class="list-group-item list-group-item-light">etc</li>
-                  </ul>
+                <h3>About the candidate.</h3>
+                <p class='text-muted'>
+                {% block candidate %}{% endblock %}
                 </p>
               </div>
             </div>

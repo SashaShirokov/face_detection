@@ -1,11 +1,20 @@
 {% extends 'layout.html' %}
 {% block content %}
     {% for data in interview_data %}
-        <div class="content-section mt-4">
-            <h4>Interview is conducted by {{ data.interviewer }} with {{ data.interviewee }}</h4>
+        <div  class="content-section mt-4">
+            <h4>Interview is conducted by {{ data.interviewer }}</h4>
             <p>The purpose of the meeting is {{ data.agenda }}</p>
-            <p>General information of {{ data.interviewee}}</p>
-            <img src="{{ data.image_source }}" alt="User Image">
+            <img  class="embed-responsive embed-responsive-4by3" src="{{ url_for('video_feed') }}">
         </div>
     {% endfor %}
 {% endblock content%}
+
+{% block candidate %}
+    {% for data in interview_data %}
+        <ul>
+            <li>name: {{ data.interviewee }}</li>
+            <li class="mb-4">date: {{ data.date_time }}</li>
+            <li><img src="{{ data.image_source }}" alt="User Image" class="img-thumbnail"></li>
+        </ul>
+    {% endfor %}
+{% endblock candidate%}
