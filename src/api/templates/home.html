@@ -4,7 +4,7 @@
         <div  class="content-section mt-4">
             <h4>Interview is conducted by {{ data.interviewer }}</h4>
             <p>The purpose of the meeting is {{ data.agenda }}</p>
-            <img  class="embed-responsive embed-responsive-4by3" src="{{ url_for('video_feed') }}">
+            <img  class="embed-responsive embed-responsive-4by3" src="{{ url_for('api_bp.video_feed') }}">
         </div>
     {% endfor %}
 {% endblock content%}

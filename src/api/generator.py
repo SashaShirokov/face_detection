@@ -3,32 +3,31 @@ import os
 import cv2
 
 
-KNOWN_FACES_DIR = 'api/known_faces'
-TOLERANCE = 0.6
-FRAME_THICKNESS = 3
-FONT_THICKNESS = 1
-MODEL = 'cnn'
+def gen(known_faces, known_names):
 
-known_faces = []
-known_names = []
+    KNOWN_FACES_DIR = 'api/known_faces'
+    TOLERANCE = 0.6
+    FRAME_THICKNESS = 3
+    FONT_THICKNESS = 1
+    MODEL = 'cnn'
 
-for name in os.listdir(KNOWN_FACES_DIR):
-    try:
-        for filename in os.listdir(f'{KNOWN_FACES_DIR}/{name}'):
-            image = face_recognition.load_image_file(f"{KNOWN_FACES_DIR}/{name}/{filename}")
-            encoding = face_recognition.face_encodings(image)[0]
-            known_faces.append(encoding)
-            known_names.append(name)
-    except NotADirectoryError:
-        pass
+    '''Training of the model on the images'''
+    for name in os.listdir(KNOWN_FACES_DIR):
+        try:
+            for filename in os.listdir(os.path.join(KNOWN_FACES_DIR, name)):
+                image = face_recognition.load_image_file(
+                    os.path.join(KNOWN_FACES_DIR, name, filename))
+                encoding = face_recognition.face_encodings(image)[0]
+                known_faces.append(encoding)
+                known_names.append(name)
+        except NotADirectoryError:
+            pass
 
-
-def gen():
     # when you use a web camera
-    video = cv2.VideoCapture(0)
+    # video = cv2.VideoCapture(0)
 
     # when you want to use video file
-    # video = cv2.VideoCapture('api/static/IMG_0909.MOV')
+    video = cv2.VideoCapture('api/static/IMG_0909.MOV')
 
     # Read until video is completed
     while(video.isOpened()):
