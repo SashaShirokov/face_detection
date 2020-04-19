@@ -3,9 +3,13 @@ import os
 import cv2
 
 
-def gen(known_faces, known_names):
+def gen(known_faces=None, known_names=None):
+    if known_faces == None:
+        knwon_faces = []
+    if known_names == None:
+        known_names = []
 
-    KNOWN_FACES_DIR = 'api/known_faces'
+    KNOWN_FACES_DIR = 'api/static/known_faces'
     TOLERANCE = 0.6
     FRAME_THICKNESS = 3
     FONT_THICKNESS = 1
