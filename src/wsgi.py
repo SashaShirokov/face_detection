@@ -21,7 +21,4 @@ class WSGIServer(WSGIApplication):
 
 
 if __name__ == '__main__':
-    import locale
-    locale.setlocale(locale.LC_ALL, 'C')
-
     WSGIServer('python wsgi.py [OPTIONS]').run()
