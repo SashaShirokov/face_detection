@@ -22,6 +22,7 @@
                   <div class="navbar-nav mr-auto">
                     <!-- <a class="nav-item nav-link" href="/">Feedabcks</a> -->
                     <a class="nav-item nav-link" href="{{ url_for('api_bp.about') }}">About</a>
+                    <a class="nav-item nav-link" href="{{ url_for('api_bp.forms') }}">Forms</a>
                   </div>
                   <!-- Navbar Right Side -->
                   <div class="navbar-nav">
@@ -36,7 +37,16 @@
         <main role="main" class="container">
           <div class="row">
             <div class="col-md-8">
-              {% block content %}{% endblock %}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                {% block content %}{% endblock %}
             </div>
             <div class="col-md-4">
               <div class="content-section mt-4">
