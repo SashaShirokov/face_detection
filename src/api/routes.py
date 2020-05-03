@@ -1,7 +1,6 @@
-from api import generator
+from api import generator, db
 from api.forms import Forms
-from api.models import interview_data
-
+from api.models import interview_data, User
 
 from flask import Flask, render_template, Response, Blueprint, url_for, flash, redirect
 
@@ -22,8 +21,11 @@ def about():
 def forms():
     form = Forms()
     if form.validate_on_submit():
+        user = User(username=form.username.data)
+        db.session.add(user)
+        db.session.commit()
         flash(f'Info from {form.username.data} has been successfully received!', 'success')
-        return redirect(url_for('api_bp.home'))
+        return redirect(url_for('api_bp.forms'))
     return render_template('forms.html', title='Forms', form=form)
 
 
